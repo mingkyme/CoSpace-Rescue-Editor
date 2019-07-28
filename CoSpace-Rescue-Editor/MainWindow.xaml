@@ -1,0 +1,55 @@
+﻿<Window x:Class="CoSpace_Rescue_Editor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoSpace_Rescue_Editor"
+        mc:Ignorable="d"
+        xmlns:custom="clr-namespace:CoSpace_Rescue_Editor.Custom"
+        
+        WindowStyle="ToolWindow"
+        Title="CoSpace Resuce Editor" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="Open_MenuItem_Click"/>
+                <MenuItem Header="Save" Click="Save_MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Left Side -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="11*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <custom:CustomRadioButton GroupName="World_Group" Text="World1" Grid.Column="0" Content="World_1" IsChecked="True" Checked="World_Button_Checked"/>
+                <custom:CustomRadioButton GroupName="World_Group" Text="World2" Grid.Column="1" Content="World_2" Checked="World_Button_Checked"/>
+
+                <TreeView Name="XAML_World1_TreeView" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Visible" SelectedItemChanged="XAML_World_TreeView_SelectedItemChanged"/>
+                <TreeView Name="XAML_World2_TreeView" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden" SelectedItemChanged="XAML_World_TreeView_SelectedItemChanged"/>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Advanced Condition" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBox Grid.Row="1" Name="XAML_Advanced_Condition_TextBox" AcceptsTab="True" AcceptsReturn="True"/>
+                <TextBlock Grid.Row="2" Text="Advanced Action" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBox Grid.Row="3" Name="XAML_Advanced_Action_TextBox" AcceptsTab="True" AcceptsReturn="True"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
